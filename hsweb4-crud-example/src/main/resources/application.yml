@@ -1,0 +1,30 @@
+spring:
+  r2dbc:
+    #    url: r2dbc:postgresql://localhost:5432/jetlinks #postgresql请使用此配置
+    #url: r2dbc:mysql://localhost:3306/jetlinks # mysql请使用此配置
+    url: r2dbc:h2:file:///./data/h2db/jetlinks
+    username: sa
+    password:
+easyorm:
+  auto-ddl: true
+  default-schema: PUBLIC  # 默认使用的schema. mysql时则为数据库名
+  dialect: h2 # 方言: h2,mysql,postgresql
+logging:
+  level:
+    org.hswebframework: debug
+    org.hswebframework.expands: error
+hsweb:
+  webflux:
+    response-wrapper:
+      enabled: false # 将响应结果包装为{"status":200,"result":{}}
+      excludes: #不包装的类
+        - org.springframework
+springdoc:
+  group-configs:
+    - group: hsweb4测试接口
+      packages-to-scan:
+        - org.hswebframework.example.crud.web
+#      paths-to-exclude:
+#        - /api/**
+  cache:
+    disabled: true
