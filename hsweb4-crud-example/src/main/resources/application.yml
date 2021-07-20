@@ -16,9 +16,9 @@ logging:
 hsweb:
   webflux:
     response-wrapper:
-      enabled: false # 将响应结果包装为{"status":200,"result":{}}
+      enabled: true # 将响应结果包装为{"status":200,"result":{}}
       excludes: #不包装的类
-        - org.springframework
+        - org.springdoc
 springdoc:
   group-configs:
     - group: hsweb4测试接口
