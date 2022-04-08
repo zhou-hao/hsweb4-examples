@@ -1,0 +1,16 @@
+spring:
+  r2dbc:
+    url: r2dbc:h2:mem:///./data/h2db/jetlinks
+    username: sa
+    password:
+  reactor:
+    debug-agent:
+      enabled: true
+easyorm:
+  auto-ddl: true
+  default-schema: PUBLIC  # 默认使用的schema. mysql时则为数据库名
+  dialect: h2 # 方言: h2,mysql,postgresql
+logging:
+  level:
+    org.hswebframework: debug
+    org.hswebframework.expands: error
