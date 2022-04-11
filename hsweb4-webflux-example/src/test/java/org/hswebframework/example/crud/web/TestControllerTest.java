@@ -68,13 +68,15 @@ class TestControllerTest {
 
 
         testClient
-                .get()
-                .uri("/api/test/{id}", entity.getId())
+                .post()
+                .uri("/api/test/_query/no-paging")
+                .contentType(MediaType.APPLICATION_JSON)
+                .bodyValue("{\"where\":\"joinTable.code is Code\"}")
                 .exchange()
                 .expectBody()
-                .jsonPath("$.joinId").isNotEmpty()
-                .jsonPath("$.joinTable.name").isEqualTo("Test")
-                .jsonPath("$.joinTable.code").isEqualTo("Code");
+                .jsonPath("$[0].joinId").isNotEmpty()
+                .jsonPath("$[0].joinTable.name").isEqualTo("Test")
+                .jsonPath("$[0].joinTable.code").isEqualTo("Code");
 
 
     }
