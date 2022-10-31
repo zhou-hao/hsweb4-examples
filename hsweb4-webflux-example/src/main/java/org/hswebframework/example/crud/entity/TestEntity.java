@@ -10,9 +10,11 @@ import org.hswebframework.ezorm.rdb.mapping.annotation.DefaultValue;
 import org.hswebframework.ezorm.rdb.mapping.annotation.EnumCodec;
 import org.hswebframework.ezorm.rdb.mapping.annotation.JsonCodec;
 import org.hswebframework.web.api.crud.entity.GenericEntity;
+import org.hswebframework.web.crud.annotation.EnableEntityEvent;
 import org.hswebframework.web.crud.generator.Generators;
 
 import javax.persistence.Column;
+import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import java.sql.JDBCType;
@@ -22,6 +24,7 @@ import java.util.Map;
 @Table(name = "t_test")
 @Getter
 @Setter
+@EnableEntityEvent
 public class TestEntity extends GenericEntity<String> {
 
     @Column(length = 64, nullable = false)
@@ -44,4 +47,10 @@ public class TestEntity extends GenericEntity<String> {
     @Schema(description = "创建时间", accessMode = Schema.AccessMode.READ_ONLY)
     @DefaultValue(generator = Generators.CURRENT_TIME)//逻辑默认值
     private Date createTime;
+
+    @Column(name = "join_id", length = 64)
+    private String joinId;
+
+    @JoinColumn(name = "join_id")
+    private JoinTable joinTable;
 }
