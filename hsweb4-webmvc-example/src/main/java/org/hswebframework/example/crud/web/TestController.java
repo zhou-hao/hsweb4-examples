@@ -2,6 +2,8 @@ package org.hswebframework.example.crud.web;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 import org.hswebframework.example.crud.entity.TestEntity;
 import org.hswebframework.example.crud.service.TestService;
 import org.hswebframework.ezorm.rdb.mapping.ReactiveRepository;
@@ -17,14 +19,15 @@ import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
 
 import java.time.Duration;
+import java.util.concurrent.ThreadLocalRandom;
 
 @AllArgsConstructor
 @RestController
 @RequestMapping("/api/test")
 @Tag(name = "简单测试")
-public class TestController implements ServiceCrudController<TestEntity,String> {
+public class TestController implements ServiceCrudController<TestEntity, String> {
 
-   private final TestService service;
+    private final TestService service;
 
     @Override
     public TestService getService() {
@@ -33,11 +36,32 @@ public class TestController implements ServiceCrudController<TestEntity,String> 
 
     //mvc中也可以直接使用reactor进行异步处理
     @GetMapping(value = "/async")
-    public Mono<Boolean> testAsync(){
+    public Mono<Boolean> testAsync() {
 
         return Mono
                 .just(true)
                 .delayElement(Duration.ofSeconds(1));
     }
+
+    @GetMapping(value = "/null")
+    public String testNull() {
+
+        return ThreadLocalRandom.current().nextBoolean() ?
+                null : "test";
+    }
+
+    @GetMapping(value = "/obj")
+    public TestObject testObj() {
+
+        return ThreadLocalRandom.current().nextBoolean() ?
+                null : new TestObject();
+    }
+
+    @Getter
+    @Setter
+    public static class TestObject {
+        private String name = "test";
+    }
+
 
 }
