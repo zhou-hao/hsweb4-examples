@@ -15,8 +15,8 @@
         <project.build.locales>zh_CN</project.build.locales>
         <java.version>1.8</java.version>
         <project.build.jdk>${java.version}</project.build.jdk>
-        <hsweb.framework.version>4.0.15-SNAPSHOT</hsweb.framework.version>
-        <spring.boot.version>2.3.12.RELEASE</spring.boot.version>
+        <hsweb.framework.version>4.0.16-SNAPSHOT</hsweb.framework.version>
+        <spring.boot.version>2.7.9</spring.boot.version>
         <r2dbc.version>Borca-SR2</r2dbc.version>
     </properties>
 
@@ -125,12 +125,7 @@
         </dependency>
 
         <dependency>
-            <groupId>dev.miku</groupId>
-            <artifactId>r2dbc-mysql</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>io.r2dbc</groupId>
+            <groupId>org.postgresql</groupId>
             <artifactId>r2dbc-postgresql</artifactId>
         </dependency>
 
@@ -167,7 +162,7 @@
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-webflux-ui</artifactId>
-            <version>1.4.5</version>
+            <version>1.6.11</version>
         </dependency>
 
         <dependency>
@@ -201,13 +196,13 @@
         <repository>
             <id>aliyun-nexus</id>
             <name>aliyun</name>
-            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <url>https://maven.aliyun.com/nexus/content/groups/public/</url>
         </repository>
 
         <repository>
             <id>hsweb-nexus</id>
             <name>Nexus Release Repository</name>
-            <url>http://nexus.hsweb.me/content/groups/public/</url>
+            <url>https://nexus.hsweb.me/content/groups/public/</url>
             <snapshots>
                 <enabled>true</enabled>
                 <updatePolicy>always</updatePolicy>
