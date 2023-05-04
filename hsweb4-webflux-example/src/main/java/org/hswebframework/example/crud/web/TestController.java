@@ -45,6 +45,19 @@ public class TestController implements ReactiveServiceCrudController<TestEntity,
                 .fetchPaged();
     }
 
+    // http://localhost:8080/api/test/join-native/_query?where=joinTable.name%20is%20123&pageSize=10
+    @GetMapping("/join-native/_query")
+    public Mono<PagerResult<TestInfo>> nativeTestJoin(QueryParamEntity query) {
+
+        return queryHelper
+                .select("select * from t_test t " +
+                                "left join join_test joinTable on joinTable.id = t.join_id",
+                        TestInfo::new)
+                // sql中不需要写查询条件,条件由前端参数自动拼接.(没有sql注入问题,放心使用)
+                .where(query)
+                .fetchPaged();
+    }
+
 
     @Getter
     @Setter
