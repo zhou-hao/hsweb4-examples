@@ -15,8 +15,8 @@
         <project.build.locales>zh_CN</project.build.locales>
         <java.version>1.8</java.version>
         <project.build.jdk>${java.version}</project.build.jdk>
-        <hsweb.framework.version>4.0.15-SNAPSHOT</hsweb.framework.version>
-        <spring.boot.version>2.3.11.RELEASE</spring.boot.version>
+        <hsweb.framework.version>4.0.16-SNAPSHOT</hsweb.framework.version>
+        <spring.boot.version>2.7.9</spring.boot.version>
     </properties>
 
     <build>
@@ -77,6 +77,12 @@
     </build>
 
     <dependencies>
+
+<!--        <dependency>-->
+<!--            <groupId>org.hswebframework.web</groupId>-->
+<!--            <artifactId>hsweb-authorization-basic</artifactId>-->
+<!--            <version>${hsweb.framework.version}</version>-->
+<!--        </dependency>-->
 
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -163,7 +169,7 @@
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-ui</artifactId>
-            <version>1.4.5</version>
+            <version>1.6.15</version>
         </dependency>
 
         <dependency>
